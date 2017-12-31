@@ -15,6 +15,9 @@ description: |
   be configured via the /var/snap/mjpg-streamer/current/config file. Set
   the DAEMON= option in there to true, then run snap restart mjpg-streamer (or
   reboot the system) to get the mjpg-streamer service up and running.
+  .
+  Please make sure to run snap connect mjpg-streamer:camera to allow the app
+  to access /dev/video*.
 grade: stable
 confinement: strict
 
