@@ -1,0 +1,51 @@
+name: mjpg-streamer
+version: '2.0'
+summary: UVC webcam streaming tool
+description: |
+  MJPG-streamer takes JPGs from Linux-UVC compatible webcams, filesystem or
+  other input plugins and streams them as M-JPEG via HTTP to webbrowsers, VLC
+  and other software. It is the successor of uvc-streamer, a Linux-UVC
+  streaming application with Pan/Tilt.
+  .
+  This snap ships the input_uvc, input_file, input_http and input_ptp2 as well
+  as the output_file.so, output_http.so, output_rtsp.so, output_udp.so and
+  output_viewer.so plugins by default, opencv is currently not supported.
+  .
+  Additionally to the mjpg-streamer command the snap ships a service that can
+  be configured via the /var/snap/mjpg-streamer/current/config file. Set
+  the DAEMON= option in there to true, then run snap restart mjpg-streamer (or
+  reboot the system) to get the mjpg-streamer service up and running.
+grade: stable
+confinement: strict
+
+apps:
+  mjpg-streamer:
+    command: bin/mjpg-streamer.sh
+    plugs: [camera,network-bind]
+  mjpg-streamer-service:
+    command: bin/mjpg-streamer.sh -d
+    daemon: simple
+    plugs: [camera,network-bind]
+
+parts:
+  mjpeg-streamer:
+    plugin: cmake
+    source: https://github.com/jacksonliam/mjpg-streamer.git
+    source-subdir: mjpg-streamer-experimental
+    build-packages:
+      - build-essential
+      - libgphoto2-dev
+      - libjpeg-turbo8-dev
+      - libsdl-dev
+      - libv4l-dev
+      - linux-libc-dev
+      - python3-dev
+      - python3-numpy
+    stage-packages:
+      - libjpeg-turbo8
+  scripts:
+    plugin: nil
+    install: |
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      cp mjpg-streamer.sh $SNAPCRAFT_PART_INSTALL/bin/
+      cp config $SNAPCRAFT_PART_INSTALL/
