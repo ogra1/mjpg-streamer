@@ -27,5 +27,4 @@ If you do not use the included daemon you are free to use i.e. ~/snap/mjpg-strea
 must be explicitly provided in "manual mode" (Note that you can always use "http://<YOUR_IP>:<PORT>/?action=stream" to access
 the camera even without a www dir set).
 
-To use the daemon, enable it in /var/snap/mjpg-streamer/current/config and run "snap restart mjpg-streamer" as described in 
-"snap info mjpg-streamer" as well as on the package homepage at https://snapcraft.io/mjpg-streamer/
+See also "snap info mjpg-streamer" as well as the package homepage at https://snapcraft.io/mjpg-streamer/ for info about this snap package.
