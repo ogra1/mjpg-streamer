@@ -1,3 +1,5 @@
+[![Snap Status](https://build.snapcraft.io/badge/ogra1/mjpg-streamer.svg)](https://build.snapcraft.io/user/ogra1/mjpg-streamer)
+
 # mjpg-streamer
 
 Snap of the UVC webcam streaming tool
