@@ -45,10 +45,27 @@ parts:
       - python3-dev
       - python3-numpy
     stage-packages:
+      - libasound2
+      - libasyncns0
+      - libcaca0
+      - libflac8
       - libjpeg-turbo8
+      - libogg0
+      - libpulse0
+      - libsdl1.2debian
+      - libsndfile1
+      - libv4l-0
+      - libv4lconvert0
+      - libvorbis0a
+      - libvorbisenc2
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxdmcp6
+      - libxext6
   scripts:
     plugin: nil
-    install: |
+    override-build: |
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
       cp mjpg-streamer.sh $SNAPCRAFT_PART_INSTALL/bin/
       cp config $SNAPCRAFT_PART_INSTALL/
